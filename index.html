@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://youdontknowwhoiam.org -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="youdontknowwhoiam">
+<meta name="description" content="who disliked my website">
+<link rel="icon" type="image/png" href="ecogpt.png">
+<title>You are an idiot!</title>
+
+<style>
+  /* Desactiva la selección de texto y el arrastre de imágenes en toda la página */
+  body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+</style>
+</head>
+<body>
+
+
+<!-- Buscando la imagen en la carpeta media -->
+<center><img src="media/yesyouare.png" alt="You Are An Idiot!" oncontextmenu="return false;"></center>
+<center><h1>When This Timer Stops <br>You Will Know How To Keep An Idiot In Suspense!<br></h1></center>
+
+<center><h1><p id="timer" style="color: red;">Time Elapsed: 1 year, 5 months, 2 weeks, 5 days, 17 hours, 54 seconds</p></h1><p></p></center>
+<center><h1>It's Coming!</h1></center>
+
+<!-- Buscando el sonido en la carpeta media con el ID para el script -->
+<center><audio id="idiot-audio" controls="" autoplay="">
+  <source src="media/esc_mix.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio></center>
+<br>
+
+<!-- Buscando el gif en la carpeta media con las dimensiones indicadas -->
+<center><img src="media/youare.gif" width="498" height="385" alt="You Are An Idiot!" oncontextmenu="return false;"></center>
+
+<script>
+  // Variable global para almacenar el tiempo transcurrido total acumulado
+  var totalElapsedTime = 0;
+  var timerInterval;
+
+  // Bloquear clic derecho en toda la página
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Bloquear combinaciones de teclado críticas
+  document.addEventListener('keydown', function(e) {
+    // Bloquear F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Bloquear Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+      e.preventDefault();
+      return false;
+    }
+    // Bloquear Ctrl+U (Ver código fuente)
+    if (e.ctrlKey && (e.key === 'U' || e.keyCode === 85)) {
+      e.preventDefault();
+      return false;
+    }
+    // Bloquear Ctrl+S (Guardar página) o Cmd+S en Mac
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Intercepta el intento de cerrar la pestaña, ventana o recargar la página
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = ''; 
+  });
+
+  // Function to update the timer
+  function updateTimer() {
+    totalElapsedTime += 1000;
+    localStorage.setItem('idiotTimerProgress', totalElapsedTime);
+
+    var elapsedTime = totalElapsedTime;
+
+    var years = Math.floor(elapsedTime / (1000 * 60 * 60 * 24 * 365));
+    elapsedTime -= years * (1000 * 60 * 60 * 24 * 365);
+    var months = Math.floor(elapsedTime / (1000 * 60 * 60 * 24 * 30.44));
+    elapsedTime -= months * (1000 * 60 * 60 * 24 * 30.44);
+    var weeks = Math.floor(elapsedTime / (1000 * 60 * 60 * 24 * 7));
+    elapsedTime -= weeks * (1000 * 60 * 60 * 24 * 7);
+    var days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+    elapsedTime -= days * (1000 * 60 * 60 * 24);
+    var hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+    elapsedTime -= hours * (1000 * 60 * 60);
+    var minutes = Math.floor(elapsedTime / (1000 * 60));
+    elapsedTime -= minutes * (1000 * 60);
+    var seconds = Math.floor(elapsedTime / 1000);
+
+    var timerString = 'Time Elapsed:';
+    if (years > 0) timerString += ' ' + years + ' year' + (years > 1 ? 's,' : ',');
+    if (months > 0) timerString += ' ' + months + ' month' + (months > 1 ? 's,' : ',');
+    if (weeks > 0) timerString += ' ' + weeks + ' week' + (weeks > 1 ? 's,' : ',');
+    if (days > 0) timerString += ' ' + days + ' day' + (days > 1 ? 's,' : ',');
+    if (hours > 0) timerString += ' ' + hours + ' hour' + (hours > 1 ? 's,' : ',');
+    if (minutes > 0) timerString += ' ' + minutes + ' minute' + (minutes > 1 ? 's,' : ',');
+    if (seconds > 0) timerString += ' ' + seconds + ' second' + (seconds > 1 ? 's' : '');
+
+    document.getElementById('timer').textContent = timerString;
+  }
+
+  // Function to start the timer
+  function startTimer() {
+    var savedProgress = localStorage.getItem('idiotTimerProgress');
+    
+    if (savedProgress !== null) {
+      totalElapsedTime = parseInt(savedProgress, 10);
+    } else {
+      var startDate = new Date('2025-05-18T00:00:00');
+      var currentTime = new Date();
+      totalElapsedTime = currentTime - startDate;
+    }
+    
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  window.onload = startTimer;
+</script>
+
+<!-- Llamando al archivo you.js dentro de la carpeta scripts -->
+<script src="scripts/you.js"></script>
+</body></html>
