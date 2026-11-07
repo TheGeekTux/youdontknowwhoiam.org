@@ -1,2 +1,2 @@
 # youdontknowwhoiam.org
-in www.youdontknowwhoiam.org/ and here.
+You Are An Idiot! When This Timer Stops You Will Know How To Keep An Idiot In Suspense! Time Elapsed: 1 year, 5 months, 2 ...
