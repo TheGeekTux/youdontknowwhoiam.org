@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Se añade translate="no" para bloquear la traducción nativa de Firefox y Safari -->
+<html lang="en" class="notranslate" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bloqueo para Chrome, Edge y navegadores basados en Chromium -->
+    <meta name="google" content="notranslate">
+    <title>You Are A Pug!</title>
+    <link rel="icon" type="image/jpeg" href="thegeekpug.jpg">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        body {
+            background-color: #d3d3d3; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+        .main-image {
+            height: 100vh; 
+            width: auto;   
+            object-fit: contain; 
+            -webkit-touch-callout: none;
+        }
+    </style>
+</head>
+<body class="notranslate" translate="no">
+
+    <img src="do not enter this website....png" 
+         alt="Do not enter this website" 
+         class="main-image" 
+         oncontextmenu="return false;" 
+         ondragstart="return false;">
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'i' || e.key === 'j')) || 
+                (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
